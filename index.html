@@ -1,0 +1,1935 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>大阪關西旅行 2025</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-cream: #FAF8F5;
+            --bg-card: #FFFFFF;
+            --text-primary: #2C2C2C;
+            --text-secondary: #6B6B6B;
+            --text-muted: #9A9A9A;
+            --accent-burgundy: #8B3A3A;
+            --accent-burgundy-light: #C97878;
+            --accent-green: #4A7C59;
+            --accent-blue: #4A6B8C;
+            --accent-gold: #B8956B;
+            --border-light: #E8E4E0;
+            --shadow-soft: 0 2px 12px rgba(0,0,0,0.06);
+            --shadow-card: 0 4px 20px rgba(0,0,0,0.08);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: var(--bg-cream);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: var(--bg-card);
+            padding: 16px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .header-top {
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .trip-label {
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .trip-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 24px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .year-badge {
+            font-size: 12px;
+            padding: 4px 12px;
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-weight: 400;
+        }
+
+        /* Calendar Strip */
+        .calendar-strip {
+            display: flex;
+            gap: 4px;
+            overflow-x: auto;
+            padding: 8px 0;
+            scrollbar-width: none;
+        }
+
+        .calendar-strip::-webkit-scrollbar {
+            display: none;
+        }
+
+        .calendar-day {
+            flex: 0 0 auto;
+            text-align: center;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: var(--radius-sm);
+            transition: all 0.2s;
+            min-width: 56px;
+        }
+
+        .calendar-day:hover {
+            background: var(--border-light);
+        }
+
+        .calendar-day.active {
+            background: var(--text-primary);
+            color: white;
+        }
+
+        .calendar-day .weekday {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 2px;
+        }
+
+        .calendar-day.active .weekday {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .calendar-day .date {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .calendar-day .dot {
+            width: 4px;
+            height: 4px;
+            background: var(--accent-burgundy);
+            border-radius: 50%;
+            margin: 4px auto 0;
+        }
+
+        .calendar-day.active .dot {
+            background: white;
+        }
+
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border-light);
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .tab-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-btn {
+            flex: 0 0 auto;
+            padding: 12px 20px;
+            font-size: 14px;
+            color: var(--text-muted);
+            border: none;
+            background: none;
+            cursor: pointer;
+            position: relative;
+            font-family: inherit;
+            white-space: nowrap;
+        }
+
+        .tab-btn.active {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 20px;
+            right: 20px;
+            height: 2px;
+            background: var(--text-primary);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 16px;
+            padding-bottom: 100px;
+        }
+
+        /* Day Hero Section */
+        .day-hero {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-bottom: 20px;
+            aspect-ratio: 16/9;
+        }
+
+        .day-hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .day-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+        }
+
+        .day-hero-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            color: white;
+        }
+
+        .day-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .day-badge-icon {
+            width: 16px;
+            height: 16px;
+        }
+
+        .day-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        /* Weather Card */
+        .weather-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .weather-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .weather-location {
+            font-weight: 500;
+        }
+
+        .weather-source {
+            font-size: 11px;
+            color: var(--text-muted);
+            background: var(--bg-cream);
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .weather-forecast {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .weather-forecast::-webkit-scrollbar {
+            display: none;
+        }
+
+        .weather-item {
+            flex: 0 0 auto;
+            text-align: center;
+            padding: 8px 12px;
+            min-width: 60px;
+        }
+
+        .weather-item .time {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .weather-item .icon {
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+
+        .weather-item .temp {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 44px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: var(--border-light);
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-time {
+            flex: 0 0 36px;
+            text-align: right;
+            padding-top: 4px;
+        }
+
+        .timeline-time .hour {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .timeline-time .period {
+            font-size: 10px;
+            color: var(--text-muted);
+        }
+
+        .timeline-dot {
+            flex: 0 0 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 2px solid var(--border-light);
+            margin-top: 4px;
+            z-index: 1;
+        }
+
+        .timeline-item.transport .timeline-dot {
+            border-color: var(--accent-blue);
+            background: var(--accent-blue);
+        }
+
+        .timeline-item.food .timeline-dot {
+            border-color: var(--accent-gold);
+            background: var(--accent-gold);
+        }
+
+        .timeline-item.sightseeing .timeline-dot {
+            border-color: var(--accent-green);
+            background: var(--accent-green);
+        }
+
+        .timeline-card {
+            flex: 1;
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            box-shadow: var(--shadow-soft);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-card);
+        }
+
+        .timeline-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .timeline-card-title {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .timeline-card-category {
+            font-size: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background: var(--bg-cream);
+            color: var(--text-muted);
+        }
+
+        .timeline-card.transport .timeline-card-category {
+            background: rgba(74, 107, 140, 0.1);
+            color: var(--accent-blue);
+        }
+
+        .timeline-card.food .timeline-card-category {
+            background: rgba(184, 149, 107, 0.1);
+            color: var(--accent-gold);
+        }
+
+        .timeline-card.sightseeing .timeline-card-category {
+            background: rgba(74, 124, 89, 0.1);
+            color: var(--accent-green);
+        }
+
+        .timeline-card-location {
+            font-size: 13px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-bottom: 8px;
+        }
+
+        .timeline-card-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .timeline-card-price {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-light);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--accent-burgundy);
+        }
+
+        /* Detail Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            display: none;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--bg-card);
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+            overflow: hidden;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .modal-header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .modal-category {
+            font-size: 11px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 4px;
+            border: 1px solid var(--border-light);
+        }
+
+        .modal-time {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .modal-close {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: var(--bg-cream);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-body {
+            padding: 20px;
+            overflow-y: auto;
+            max-height: calc(90vh - 60px);
+        }
+
+        .modal-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .modal-address {
+            font-size: 13px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 20px;
+        }
+
+        /* Point & Speak Section */
+        .speak-section {
+            background: var(--bg-cream);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+
+        .speak-header {
+            font-size: 12px;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .speak-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-light);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .speak-item:last-child {
+            border-bottom: none;
+        }
+
+        .speak-item:hover {
+            background: rgba(255,255,255,0.5);
+            margin: 0 -8px;
+            padding: 12px 8px;
+            border-radius: 8px;
+        }
+
+        .speak-zh {
+            font-size: 14px;
+        }
+
+        .speak-jp {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Info Section */
+        .info-section {
+            margin-bottom: 20px;
+        }
+
+        .info-title {
+            font-size: 12px;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-content {
+            font-size: 14px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .info-content p {
+            margin-bottom: 12px;
+        }
+
+        .info-content strong {
+            color: var(--text-primary);
+        }
+
+        /* GPS Card */
+        .gps-card {
+            background: var(--bg-cream);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .gps-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-card);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .gps-info {
+            flex: 1;
+        }
+
+        .gps-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .gps-number {
+            font-size: 18px;
+            font-weight: 600;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Map Button */
+        .map-btn {
+            width: 100%;
+            background: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: var(--radius-md);
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: opacity 0.2s;
+            font-family: inherit;
+        }
+
+        .map-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Budget Tab */
+        .budget-summary {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .budget-total-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .budget-total {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .budget-total .currency {
+            font-size: 20px;
+        }
+
+        .budget-per-person {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .budget-filters {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .budget-filters::-webkit-scrollbar {
+            display: none;
+        }
+
+        .budget-filter {
+            padding: 8px 16px;
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            font-size: 13px;
+            background: var(--bg-card);
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            font-family: inherit;
+        }
+
+        .budget-filter.active {
+            background: var(--text-primary);
+            color: white;
+            border-color: var(--text-primary);
+        }
+
+        .budget-item {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            margin-bottom: 12px;
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .budget-item-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .budget-item-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-cream);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .budget-item-name {
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+
+        .budget-item-category {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .budget-item-amount {
+            text-align: right;
+        }
+
+        .budget-item-price {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .budget-item-status {
+            font-size: 11px;
+            color: var(--accent-green);
+        }
+
+        /* Info Tab */
+        .info-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .info-card-title {
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .emergency-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .emergency-item {
+            background: var(--bg-cream);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            text-align: center;
+        }
+
+        .emergency-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .emergency-number {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--accent-burgundy);
+        }
+
+        .hotline-item {
+            padding: 16px;
+            background: var(--bg-cream);
+            border-radius: var(--radius-sm);
+            margin-bottom: 12px;
+        }
+
+        .hotline-title {
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .hotline-subtitle {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .hotline-number {
+            font-size: 20px;
+            font-weight: 600;
+            font-family: 'Courier New', monospace;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .call-btn {
+            width: 36px;
+            height: 36px;
+            background: var(--text-primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Map Section */
+        .map-section {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .map-header {
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .map-title {
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .map-count {
+            font-size: 12px;
+            background: var(--bg-cream);
+            padding: 4px 10px;
+            border-radius: 12px;
+            color: var(--text-muted);
+        }
+
+        .map-container {
+            height: 250px;
+            background: #E8E4E0;
+            position: relative;
+        }
+
+        .map-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+        }
+
+        .map-open-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px;
+            border-top: 1px solid var(--border-light);
+            color: var(--accent-blue);
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .map-open-btn:hover {
+            background: var(--bg-cream);
+        }
+
+        /* Bottom Preview Bar */
+        .preview-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-light);
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 50;
+        }
+
+        .preview-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-cream);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 18px;
+        }
+
+        .preview-content {
+            flex: 1;
+        }
+
+        .preview-time {
+            font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .preview-badge {
+            font-size: 10px;
+            padding: 2px 8px;
+            background: var(--bg-cream);
+            border-radius: 4px;
+            color: var(--text-muted);
+        }
+
+        .preview-title {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .preview-next {
+            text-align: right;
+        }
+
+        .preview-next-label {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .preview-next-time {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Fullscreen Card (Point & Speak) */
+        .fullscreen-card {
+            position: fixed;
+            inset: 0;
+            background: var(--bg-cream);
+            z-index: 2000;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .fullscreen-card.active {
+            display: flex;
+        }
+
+        .fullscreen-close {
+            position: absolute;
+            top: 20px;
+            font-size: 12px;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+        }
+
+        .fullscreen-badge {
+            position: absolute;
+            top: 60px;
+            right: 30px;
+            font-size: 12px;
+            color: var(--accent-burgundy);
+            border: 1px solid var(--accent-burgundy);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .fullscreen-text {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 48px;
+            font-weight: 600;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .fullscreen-label {
+            margin-top: 40px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .timeline-item {
+            animation: fadeIn 0.4s ease forwards;
+            opacity: 0;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+        .timeline-item:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="trip-label">FAMILY TRIP</div>
+            <div class="trip-title">
+                大阪關西旅行 
+                <span class="year-badge">2025</span>
+            </div>
+        </div>
+        <div class="calendar-strip" id="calendarStrip">
+            <!-- Calendar days will be inserted here -->
+        </div>
+    </header>
+
+    <!-- Tab Navigation -->
+    <nav class="tab-nav">
+        <button class="tab-btn active" data-tab="schedule">行程</button>
+        <button class="tab-btn" data-tab="budget">帳本</button>
+        <button class="tab-btn" data-tab="info">資訊</button>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Schedule Tab -->
+        <div class="tab-content active" id="scheduleTab">
+            <!-- Day Hero -->
+            <div class="day-hero" id="dayHero">
+                <img class="day-hero-image" src="https://images.unsplash.com/photo-1590559899731-a382839e5549?w=800&h=450&fit=crop" alt="大阪">
+                <div class="day-hero-overlay"></div>
+                <div class="day-hero-content">
+                    <div class="day-badge">
+                        <span>DAY 1</span>
+                        <span>📍 大阪・難波</span>
+                    </div>
+                    <div class="day-title" id="heroTitle">心齋橋、戎橋、道頓堀夜景</div>
+                </div>
+            </div>
+
+            <!-- Weather Card -->
+            <div class="weather-card">
+                <div class="weather-header">
+                    <div class="weather-location" id="weatherLocation">大阪市</div>
+                    <div class="weather-source">Open-Meteo</div>
+                </div>
+                <div class="weather-forecast">
+                    <div class="weather-item">
+                        <div class="time">現在</div>
+                        <div class="icon">☀️</div>
+                        <div class="temp">12°</div>
+                    </div>
+                    <div class="weather-item">
+                        <div class="time">14:00</div>
+                        <div class="icon">⛅</div>
+                        <div class="temp">14°</div>
+                    </div>
+                    <div class="weather-item">
+                        <div class="time">17:00</div>
+                        <div class="icon">🌤️</div>
+                        <div class="temp">11°</div>
+                    </div>
+                    <div class="weather-item">
+                        <div class="time">20:00</div>
+                        <div class="icon">🌙</div>
+                        <div class="temp">9°</div>
+                    </div>
+                    <div class="weather-item">
+                        <div class="time">23:00</div>
+                        <div class="icon">🌙</div>
+                        <div class="temp">8°</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="timeline" id="timeline">
+                <!-- Timeline items will be inserted here -->
+            </div>
+        </div>
+
+        <!-- Budget Tab -->
+        <div class="tab-content" id="budgetTab">
+            <div class="budget-summary">
+                <div class="budget-total-label">總金額 (台幣)</div>
+                <div class="budget-total"><span class="currency">$</span><span id="totalBudget">0</span></div>
+                <div class="budget-per-person">每人均攤: <span id="perPerson">$0</span></div>
+            </div>
+
+            <div class="budget-filters">
+                <button class="budget-filter active" data-filter="all">全部</button>
+                <button class="budget-filter" data-filter="transport">交通</button>
+                <button class="budget-filter" data-filter="food">餐飲</button>
+                <button class="budget-filter" data-filter="activity">門票</button>
+            </div>
+
+            <div id="budgetList">
+                <!-- Budget items will be inserted here -->
+            </div>
+        </div>
+
+        <!-- Info Tab -->
+        <div class="tab-content" id="infoTab">
+            <!-- Map Section -->
+            <div class="map-section">
+                <div class="map-header">
+                    <div class="map-title">🗺️ 全行程地圖</div>
+                    <div class="map-count" id="mapCount">20 個停留點</div>
+                </div>
+                <div class="map-container">
+                    <div class="map-placeholder">
+                        <div style="font-size: 48px; margin-bottom: 8px;">🗾</div>
+                        <div>大阪・京都・奈良</div>
+                    </div>
+                </div>
+                <div class="map-open-btn" onclick="openGoogleMaps()">
+                    🔗 開啟 Google Maps 導航
+                </div>
+            </div>
+
+            <!-- Visit Japan Web -->
+            <div class="info-card" style="background: #2C2C2C; color: white;">
+                <div style="font-size: 11px; letter-spacing: 1px; margin-bottom: 8px; color: rgba(255,255,255,0.6);">MUST HAVE</div>
+                <div class="info-card-title" style="font-size: 20px; margin-bottom: 4px;">
+                    Visit Japan Web
+                    <span style="margin-left: auto; font-size: 20px;">↗</span>
+                </div>
+                <div style="font-size: 13px; color: rgba(255,255,255,0.7);">入境審查 & 海關申報 (請截圖 QR Code)</div>
+            </div>
+
+            <!-- Emergency -->
+            <div class="info-card">
+                <div class="info-card-title">🚨 緊急聯絡 & 支援</div>
+                <div class="emergency-grid">
+                    <div class="emergency-item">
+                        <div class="emergency-label">警察 (POLICE)</div>
+                        <div class="emergency-number">110</div>
+                    </div>
+                    <div class="emergency-item">
+                        <div class="emergency-label">救護/火警</div>
+                        <div class="emergency-number">119</div>
+                    </div>
+                </div>
+                <div class="hotline-item">
+                    <div class="hotline-title">訪日外國人</div>
+                    <div class="hotline-title">醫療 & 急難熱線</div>
+                    <div class="hotline-subtitle">JAPAN VISITOR HOTLINE (JNTO)</div>
+                    <div class="hotline-number">
+                        050-3816-2787
+                        <button class="call-btn">📞</button>
+                    </div>
+                    <div style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">* 24小時對應 (英/中/韓)。生病受傷或發生事故時可撥打。</div>
+                </div>
+                <div class="hotline-item">
+                    <div style="display: inline-block; padding: 2px 8px; background: var(--accent-burgundy); color: white; font-size: 11px; border-radius: 4px; margin-bottom: 8px;">外交部</div>
+                    <div class="hotline-title">台北駐大阪經濟文化辦事處</div>
+                    <div class="hotline-number" style="font-size: 16px;">06-6443-8481 (上班時間)</div>
+                    <div class="hotline-number" style="font-size: 16px; color: var(--accent-burgundy);">090-8794-4568 (急難救助)</div>
+                </div>
+            </div>
+
+            <!-- Transport Cards -->
+            <div class="info-card">
+                <div class="info-card-title">🚗 交通卡片</div>
+                <div style="background: var(--bg-cream); padding: 16px; border-radius: var(--radius-sm); margin-bottom: 12px;">
+                    <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">給司機 (TO DRIVER)</div>
+                    <div style="font-size: 20px; font-weight: 500;">ここへ行ってください。</div>
+                    <div style="font-size: 12px; color: var(--text-muted);">(請載我到這裡)</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Preview Bar -->
+    <div class="preview-bar" id="previewBar">
+        <div class="preview-icon">📍</div>
+        <div class="preview-content">
+            <div class="preview-time">
+                <span id="previewTime">14:30</span>
+                <span class="preview-badge">行程預覽</span>
+            </div>
+            <div class="preview-title" id="previewTitle">梅田空中庭園、HEP FIVE摩天輪</div>
+        </div>
+        <div class="preview-next">
+            <div class="preview-next-label">下個時間</div>
+            <div class="preview-next-time" id="previewNextTime">19:30</div>
+        </div>
+    </div>
+
+    <!-- Detail Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-header-left">
+                    <span class="modal-category" id="modalCategory">SIGHTSEEING</span>
+                    <span class="modal-time" id="modalTime">09:00</span>
+                </div>
+                <button class="modal-close" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <h2 class="modal-title" id="modalTitle">通天閣</h2>
+                <div class="modal-address" id="modalAddress">
+                    📍 <span>大阪市浪速区恵美須東1-18-6</span>
+                </div>
+
+                <!-- Point & Speak -->
+                <div class="speak-section" id="speakSection">
+                    <div class="speak-header">
+                        <span>🗣️</span>
+                        <span>指差し会話 (POINT & SPEAK)</span>
+                    </div>
+                    <div id="speakItems">
+                        <!-- Speak items will be inserted here -->
+                    </div>
+                </div>
+
+                <!-- GPS Info -->
+                <div class="gps-card" id="gpsCard" style="display: none;">
+                    <div class="gps-icon">📍</div>
+                    <div class="gps-info">
+                        <div class="gps-label">CAR GPS / PHONE</div>
+                        <div class="gps-number" id="gpsNumber">06-6641-9555</div>
+                    </div>
+                </div>
+
+                <!-- Info Section -->
+                <div class="info-section">
+                    <div class="info-title">
+                        <span>ℹ️</span>
+                        <span>關於此處 (ABOUT)</span>
+                    </div>
+                    <div class="info-content" id="modalInfo">
+                        <!-- Info content will be inserted here -->
+                    </div>
+                </div>
+
+                <!-- Map Button -->
+                <button class="map-btn" id="mapBtn" onclick="openLocationMap()">
+                    🗺️ 開啟 Google Maps 導航
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Card -->
+    <div class="fullscreen-card" id="fullscreenCard">
+        <div class="fullscreen-close">TAP TO CLOSE</div>
+        <div class="fullscreen-badge">關西</div>
+        <div class="fullscreen-text" id="fullscreenText">通天閣</div>
+        <div class="fullscreen-label">給店員看的放大字卡</div>
+    </div>
+
+    <script>
+        // Trip Data
+        const tripData = {
+            startDate: new Date('2025-03-15'),
+            days: 7,
+            schedule: [
+                // Day 1
+                {
+                    day: 1,
+                    title: '關西機場→難波',
+                    location: '大阪・難波',
+                    image: 'https://images.unsplash.com/photo-1590559899731-a382839e5549?w=800&h=450&fit=crop',
+                    items: [
+                        {
+                            time: '下午',
+                            title: '關西機場→難波',
+                            category: 'transport',
+                            location: '南海電鐵空港急行',
+                            price: 920,
+                            desc: '搭乘南海電鐵空港急行從關西機場前往難波站，車程約45分鐘。建議購買大阪周遊卡或ICOCA。',
+                            speak: [
+                                { zh: '難波站', jp: '難波駅（なんば えき）' },
+                                { zh: '空港急行', jp: '空港急行（くうこうきゅうこう）' }
+                            ]
+                        },
+                        {
+                            time: '傍晚',
+                            title: '心齋橋、戎橋、道頓堀夜景',
+                            category: 'sightseeing',
+                            location: '大阪市中央区心斎橋筋',
+                            price: 0,
+                            desc: '【必訪景點】道頓堀是大阪最著名的美食街，以巨大的螃蟹招牌和格力高跑步人廣告聞名。傍晚時分霓虹燈亮起，是拍照的最佳時機。',
+                            phone: '06-6211-4542',
+                            speak: [
+                                { zh: '道頓堀', jp: '道頓堀（どうとんぼり）' },
+                                { zh: '固力果看板', jp: 'グリコサイン' }
+                            ]
+                        }
+                    ]
+                },
+                // Day 2
+                {
+                    day: 2,
+                    title: '通天閣・大阪城・阿倍野Harukas',
+                    location: '大阪市區',
+                    image: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&h=450&fit=crop',
+                    items: [
+                        {
+                            time: '09:00',
+                            endTime: '11:00',
+                            title: '通天閣（惠美須町站）',
+                            category: 'sightseeing',
+                            location: '大阪市浪速区恵美須東1-18-6',
+                            price: 230,
+                            desc: '【大阪地標】通天閣是大阪新世界的象徵，高103米。頂層展望台可眺望大阪市景，內部有招福的比利肯神像，摸其腳底據說能帶來好運。',
+                            phone: '06-6641-9555',
+                            speak: [
+                                { zh: '展望台門票', jp: '展望台チケット' },
+                                { zh: '比利肯神', jp: 'ビリケンさん' }
+                            ]
+                        },
+                        {
+                            time: '11:30',
+                            endTime: '13:00',
+                            title: '大阪城天守閣（森之宮站）',
+                            category: 'sightseeing',
+                            location: '大阪市中央区大阪城1-1',
+                            price: 280,
+                            desc: '【歷史地位】大阪城由豐臣秀吉於1583年建造，與名古屋城、熊本城並列「日本三大名城」。天守閣內部展示豐臣秀吉與大阪城歷史。',
+                            phone: '06-6941-3044',
+                            speak: [
+                                { zh: '天守閣', jp: '天守閣（てんしゅかく）' },
+                                { zh: '入場券', jp: '入場券（にゅうじょうけん）' }
+                            ]
+                        },
+                        {
+                            time: '14:30',
+                            endTime: '17:00',
+                            title: '梅田空中庭園、HEP FIVE摩天輪',
+                            category: 'sightseeing',
+                            location: '大阪市北区梅田',
+                            price: 230,
+                            desc: '【建築奇觀】梅田藍天大廈的空中庭園是世界上連接兩棟大樓的最高展望台，173米高的觀景台可360度俯瞰大阪。HEP FIVE的紅色摩天輪則是梅田地標。',
+                            phone: '06-6440-3899',
+                            speak: [
+                                { zh: '空中庭園', jp: '空中庭園（くうちゅうていえん）' },
+                                { zh: '摩天輪', jp: '観覧車（かんらんしゃ）' }
+                            ]
+                        },
+                        {
+                            time: '19:30',
+                            endTime: '21:00',
+                            title: '阿倍野Harukas夜景（天王寺站）',
+                            category: 'sightseeing',
+                            location: '大阪市阿倍野区阿倍野筋1-1-43',
+                            price: 230,
+                            desc: '【日本第一高樓】阿倍野Harukas高300米，是日本最高的摩天大樓。60樓的Harukas 300展望台提供壯觀的夜景，可遠眺大阪灣、明石海峽大橋。',
+                            phone: '06-6621-0300',
+                            speak: [
+                                { zh: '展望台', jp: 'ハルカス300' },
+                                { zh: '夜景', jp: '夜景（やけい）' }
+                            ]
+                        }
+                    ]
+                },
+                // Day 3
+                {
+                    day: 3,
+                    title: '嵐山・宇治',
+                    location: '京都嵐山・宇治',
+                    image: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=800&h=450&fit=crop',
+                    items: [
+                        {
+                            time: '08:00',
+                            endTime: '12:00',
+                            title: '嵐山竹林、天龍寺、渡月橋',
+                            category: 'sightseeing',
+                            location: '京都市右京区嵯峨天龍寺',
+                            price: 400,
+                            desc: '【世界遺產】嵐山是京都最具代表性的景點之一。竹林小徑清幽靜謐，天龍寺是世界遺產，渡月橋則是嵐山的象徵。建議一早前往避開人潮。',
+                            phone: '075-881-1235',
+                            speak: [
+                                { zh: '竹林', jp: '竹林（ちくりん）' },
+                                { zh: '渡月橋', jp: '渡月橋（とげつきょう）' }
+                            ]
+                        },
+                        {
+                            time: '13:00',
+                            endTime: '15:30',
+                            title: '宇治平等院鳳凰堂、宇治川散步、抹茶甜點',
+                            category: 'sightseeing',
+                            location: '京都府宇治市宇治蓮華116',
+                            price: 230,
+                            desc: '【世界遺產】平等院是日本國寶，十圓硬幣上的圖案就是鳳凰堂。宇治是日本茶的發源地，必嚐正宗抹茶甜點。推薦中村藤吉本店。',
+                            phone: '0774-21-2861',
+                            speak: [
+                                { zh: '鳳凰堂', jp: '鳳凰堂（ほうおうどう）' },
+                                { zh: '抹茶', jp: '抹茶（まっちゃ）' }
+                            ]
+                        },
+                        {
+                            time: '晚上',
+                            title: '祇園夜景（可選）',
+                            category: 'sightseeing',
+                            location: '京都市東山区祇園',
+                            price: 230,
+                            desc: '【藝妓街】祇園是京都最著名的花街，傳統町家建築林立。傍晚時分可能巧遇趕場的藝妓或舞妓。花見小路是最具代表性的街道。',
+                            speak: [
+                                { zh: '祇園', jp: '祇園（ぎおん）' },
+                                { zh: '花見小路', jp: '花見小路（はなみこうじ）' }
+                            ]
+                        }
+                    ]
+                },
+                // Day 4
+                {
+                    day: 4,
+                    title: '天橋立・伊根舟屋',
+                    location: '京都府北部',
+                    image: 'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&h=450&fit=crop',
+                    items: [
+                        {
+                            time: '06:00',
+                            endTime: '10:00',
+                            title: '大阪→天橋立（JR或高速巴士）',
+                            category: 'transport',
+                            location: 'JR西日本特急（はしだて号）',
+                            price: 4000,
+                            desc: '【交通建議】從大阪出發可選擇JR特急「はしだて」號直達天橋立，車程約2.5小時。或搭乘高速巴士，較經濟但時間較長。建議提前購票。',
+                            speak: [
+                                { zh: '天橋立', jp: '天橋立（あまのはしだて）' },
+                                { zh: '特急列車', jp: '特急（とっきゅう）' }
+                            ]
+                        },
+                        {
+                            time: '10:00',
+                            endTime: '13:00',
+                            title: '天橋立散步、觀景台',
+                            category: 'sightseeing',
+                            location: '京都府宮津市天橋立',
+                            price: 800,
+                            desc: '【日本三景】天橋立是日本三景之一，全長3.6公里的沙洲上種滿松樹。搭乘纜車上山，從「股覗」倒看天橋立，宛如飛龍昇天的景象。',
+                            phone: '0772-22-8030',
+                            speak: [
+                                { zh: '纜車', jp: 'ケーブルカー' },
+                                { zh: '股覗', jp: '股のぞき（またのぞき）' }
+                            ]
+                        },
+                        {
+                            time: '13:00',
+                            endTime: '16:00',
+                            title: '伊根舟屋觀光',
+                            category: 'sightseeing',
+                            location: '京都府与謝郡伊根町',
+                            price: 750,
+                            desc: '【重要傳統建造物】伊根舟屋是日本海沿岸獨特的漁村景觀，230棟傳統木造房屋一樓停船、二樓住人。可搭乘遊覽船從海上欣賞這幅如畫的風景。',
+                            phone: '0772-32-0277',
+                            speak: [
+                                { zh: '舟屋', jp: '舟屋（ふなや）' },
+                                { zh: '遊覽船', jp: '遊覧船（ゆうらんせん）' }
+                            ]
+                        },
+                        {
+                            time: '16:00',
+                            endTime: '19:00',
+                            title: '返回大阪',
+                            category: 'transport',
+                            location: 'JR或高速巴士',
+                            price: 4000,
+                            desc: '搭乘JR特急或高速巴士返回大阪。建議在天橋立站附近用完晚餐後再返程，可品嚐當地的丹後蟹料理。',
+                            speak: [
+                                { zh: '大阪', jp: '大阪（おおさか）' },
+                                { zh: '返程', jp: '帰り（かえり）' }
+                            ]
+                        }
+                    ]
+                },
+                // Day 5
+                {
+                    day: 5,
+                    title: '京都東山・貴船神社',
+                    location: '京都',
+                    image: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&h=450&fit=crop',
+                    items: [
+                        {
+                            time: '08:00',
+                            endTime: '12:00',
+                            title: '京都東山（八坂神社、清水寺、二年坂）',
+                            category: 'sightseeing',
+                            location: '京都市東山区',
+                            price: 230,
+                            desc: '【必訪路線】從八坂神社出發，沿著二年坂、三年坂步行至清水寺，是京都最經典的散步路線。沿途有許多傳統商店和町家咖啡廳。清水舞台是必拍景點。',
+                            phone: '075-551-1234',
+                            speak: [
+                                { zh: '清水寺', jp: '清水寺（きよみずでら）' },
+                                { zh: '御守', jp: 'お守り（おまもり）' }
+                            ]
+                        },
+                        {
+                            time: '13:00',
+                            endTime: '16:00',
+                            title: '貴船神社',
+                            category: 'sightseeing',
+                            location: '京都市左京区鞍馬貴船町180',
+                            price: 400,
+                            desc: '【結緣聖地】貴船神社是日本全國約500座貴船神社的總本社，以水占卜聞名。參道兩旁的紅燈籠在綠蔭中特別夢幻，是IG熱門打卡點。',
+                            phone: '075-741-2016',
+                            speak: [
+                                { zh: '水占卜', jp: '水占い（みずうらない）' },
+                                { zh: '結緣', jp: '縁結び（えんむすび）' }
+                            ]
+                        },
+                        {
+                            time: '傍晚',
+                            title: '返回京都或大阪',
+                            category: 'transport',
+                            location: '公車或JR',
+                            price: 500,
+                            desc: '從貴船搭乘叡山電車回出町柳站，再轉乘京阪電車或JR返回大阪。如果時間充裕，可以在河原町或四條烏丸逛街用餐。',
+                            speak: [
+                                { zh: '叡山電車', jp: '叡山電車（えいざんでんしゃ）' }
+                            ]
+                        }
+                    ]
+                },
+                // Day 6
+                {
+                    day: 6,
+                    title: '勝尾寺・奈良',
+                    location: '箕面・奈良',
+                    image: 'https://images.unsplash.com/photo-1624253321171-1be53e12f5f4?w=800&h=450&fit=crop',
+                    items: [
+                        {
+                            time: '08:00',
+                            endTime: '11:00',
+                            title: '勝尾寺祈福（阪急寶塚線）',
+                            category: 'sightseeing',
+                            location: '大阪府箕面市勝尾寺',
+                            price: 425,
+                            desc: '【勝運祈願】勝尾寺以「勝運」聞名，寺內擺滿了許願達成的達摩不倒翁，景象壯觀。據說在考試、比賽、事業上祈願特別靈驗。',
+                            phone: '072-721-7010',
+                            speak: [
+                                { zh: '達摩', jp: 'だるま' },
+                                { zh: '勝運祈願', jp: '勝運祈願（しょううんきがん）' }
+                            ]
+                        },
+                        {
+                            time: '12:00',
+                            endTime: '16:00',
+                            title: '奈良半日遊（東大寺、奈良公園）',
+                            category: 'sightseeing',
+                            location: '奈良県奈良市',
+                            price: 620,
+                            desc: '【世界遺產】東大寺的大佛殿是世界最大的木造建築，內有高15米的盧舍那大佛。奈良公園有超過1000頭溫馴的鹿，可購買鹿仙貝餵食。',
+                            phone: '0742-22-5511',
+                            speak: [
+                                { zh: '東大寺', jp: '東大寺（とうだいじ）' },
+                                { zh: '鹿仙貝', jp: '鹿せんべい（しかせんべい）' }
+                            ]
+                        },
+                        {
+                            time: '17:00',
+                            endTime: '19:00',
+                            title: '黑門市場晚餐',
+                            category: 'food',
+                            location: '大阪市中央区日本橋',
+                            price: 0,
+                            desc: '【大阪的廚房】黑門市場有190年歷史，被稱為「大阪的廚房」。這裡可以品嚐到最新鮮的海鮮、河豚、和牛等美食。推薦試試現烤帝王蟹腳。',
+                            phone: '06-6631-0007',
+                            speak: [
+                                { zh: '黑門市場', jp: '黒門市場（くろもんいちば）' },
+                                { zh: '帝王蟹', jp: 'タラバガニ' }
+                            ]
+                        }
+                    ]
+                },
+                // Day 7
+                {
+                    day: 7,
+                    title: '難波購物・回程',
+                    location: '大阪・關西機場',
+                    image: 'https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?w=800&h=450&fit=crop',
+                    items: [
+                        {
+                            time: '上午',
+                            title: '心齋橋、難波購物採買',
+                            category: 'sightseeing',
+                            location: '大阪市中央区心斎橋筋',
+                            price: 0,
+                            desc: '【購物天堂】心齋橋筋商店街是大阪最大的購物街，從高端品牌到平價藥妝應有盡有。難波的BIC CAMERA和唐吉訶德是買電器和零食的好去處。',
+                            speak: [
+                                { zh: '免稅', jp: '免税（めんぜい）' },
+                                { zh: '可以刷卡嗎', jp: 'カードは使えますか' }
+                            ]
+                        },
+                        {
+                            time: '中午',
+                            title: '前往關西機場',
+                            category: 'transport',
+                            location: '南海電鐵或JR',
+                            price: 920,
+                            desc: '搭乘南海電鐵特急Rapi:t或JR關空快速前往關西機場。建議提前2.5-3小時抵達機場，預留退稅和安檢時間。',
+                            speak: [
+                                { zh: '關西機場', jp: '関西空港（かんさいくうこう）' },
+                                { zh: '第一航廈', jp: '第1ターミナル' }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        };
+
+        // Budget Data
+        const budgetData = [
+            { name: '南海電鐵（來回）', category: 'transport', price: 1840, paid: true },
+            { name: '大阪周遊卡 2日券', category: 'transport', price: 3600, paid: true },
+            { name: '天橋立交通（來回）', category: 'transport', price: 8000, paid: false },
+            { name: '京都巴士一日券', category: 'transport', price: 700, paid: true },
+            { name: '近鐵奈良線', category: 'transport', price: 620, paid: true },
+            { name: '東大寺門票', category: 'activity', price: 600, paid: false },
+            { name: '清水寺門票', category: 'activity', price: 400, paid: false },
+            { name: '勝尾寺門票', category: 'activity', price: 425, paid: false },
+            { name: '黑門市場晚餐', category: 'food', price: 3000, paid: false },
+            { name: '宇治抹茶甜點', category: 'food', price: 800, paid: false }
+        ];
+
+        // Initialize Calendar
+        function initCalendar() {
+            const strip = document.getElementById('calendarStrip');
+            const weekdays = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+            
+            for (let i = 0; i < tripData.days; i++) {
+                const date = new Date(tripData.startDate);
+                date.setDate(date.getDate() + i);
+                
+                const dayEl = document.createElement('div');
+                dayEl.className = 'calendar-day' + (i === 0 ? ' active' : '');
+                dayEl.dataset.day = i + 1;
+                dayEl.innerHTML = `
+                    <div class="weekday">${weekdays[date.getDay()]}</div>
+                    <div class="date">${date.getDate()}</div>
+                    <div class="dot"></div>
+                `;
+                dayEl.addEventListener('click', () => selectDay(i + 1));
+                strip.appendChild(dayEl);
+            }
+        }
+
+        // Select Day
+        function selectDay(day) {
+            document.querySelectorAll('.calendar-day').forEach(el => {
+                el.classList.toggle('active', parseInt(el.dataset.day) === day);
+            });
+            renderSchedule(day);
+        }
+
+        // Render Schedule
+        function renderSchedule(day) {
+            const dayData = tripData.schedule.find(d => d.day === day);
+            if (!dayData) return;
+
+            // Update hero
+            document.querySelector('.day-hero-image').src = dayData.image;
+            document.getElementById('heroTitle').textContent = dayData.title;
+            document.querySelector('.day-badge').innerHTML = `
+                <span>DAY ${day}</span>
+                <span>📍 ${dayData.location}</span>
+            `;
+
+            // Update weather location
+            document.getElementById('weatherLocation').textContent = dayData.location.split('・')[0];
+
+            // Render timeline
+            const timeline = document.getElementById('timeline');
+            timeline.innerHTML = '';
+
+            dayData.items.forEach((item, index) => {
+                const timelineItem = document.createElement('div');
+                timelineItem.className = `timeline-item ${item.category}`;
+                
+                const timeDisplay = item.time.includes(':') 
+                    ? `<span class="hour">${item.time}</span>` 
+                    : `<span class="hour" style="font-size: 12px;">${item.time}</span>`;
+
+                const categoryLabels = {
+                    transport: '交通',
+                    food: '美食',
+                    sightseeing: '景點'
+                };
+
+                timelineItem.innerHTML = `
+                    <div class="timeline-time">${timeDisplay}</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card ${item.category}" onclick="openDetail(${day}, ${index})">
+                        <div class="timeline-card-header">
+                            <div class="timeline-card-title">${item.title}</div>
+                            <div class="timeline-card-category">${categoryLabels[item.category]}</div>
+                        </div>
+                        <div class="timeline-card-location">📍 ${item.location}</div>
+                        <div class="timeline-card-desc">${item.desc}</div>
+                        ${item.price > 0 ? `<div class="timeline-card-price">¥${item.price.toLocaleString()} / 人</div>` : ''}
+                    </div>
+                `;
+                timeline.appendChild(timelineItem);
+            });
+
+            // Update preview bar
+            if (dayData.items.length > 0) {
+                const nextItem = dayData.items[1] || dayData.items[0];
+                document.getElementById('previewTime').textContent = dayData.items[0].time;
+                document.getElementById('previewTitle').textContent = dayData.items[0].title;
+                document.getElementById('previewNextTime').textContent = nextItem.endTime || nextItem.time;
+            }
+        }
+
+        // Open Detail Modal
+        let currentItem = null;
+        function openDetail(day, index) {
+            const dayData = tripData.schedule.find(d => d.day === day);
+            const item = dayData.items[index];
+            currentItem = item;
+
+            const categoryLabels = {
+                transport: 'TRANSPORT',
+                food: 'FOOD',
+                sightseeing: 'SIGHTSEEING'
+            };
+
+            document.getElementById('modalCategory').textContent = categoryLabels[item.category];
+            document.getElementById('modalTime').textContent = item.time;
+            document.getElementById('modalTitle').textContent = item.title;
+            document.getElementById('modalAddress').innerHTML = `📍 <span>${item.location}</span>`;
+            document.getElementById('modalInfo').innerHTML = `<p>${item.desc}</p>`;
+
+            // Speak section
+            const speakSection = document.getElementById('speakSection');
+            const speakItems = document.getElementById('speakItems');
+            if (item.speak && item.speak.length > 0) {
+                speakSection.style.display = 'block';
+                speakItems.innerHTML = item.speak.map(s => `
+                    <div class="speak-item" onclick="showFullscreen('${s.jp}')">
+                        <span class="speak-zh">${s.zh}</span>
+                        <span class="speak-jp">${s.jp}</span>
+                    </div>
+                `).join('');
+            } else {
+                speakSection.style.display = 'none';
+            }
+
+            // GPS section
+            const gpsCard = document.getElementById('gpsCard');
+            if (item.phone) {
+                gpsCard.style.display = 'flex';
+                document.getElementById('gpsNumber').textContent = item.phone;
+            } else {
+                gpsCard.style.display = 'none';
+            }
+
+            document.getElementById('modalOverlay').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+        }
+
+        // Fullscreen Card
+        function showFullscreen(text) {
+            document.getElementById('fullscreenText').textContent = text;
+            document.getElementById('fullscreenCard').classList.add('active');
+        }
+
+        document.getElementById('fullscreenCard').addEventListener('click', () => {
+            document.getElementById('fullscreenCard').classList.remove('active');
+        });
+
+        // Open Google Maps
+        function openLocationMap() {
+            if (currentItem) {
+                const query = encodeURIComponent(currentItem.location);
+                window.open(`https://www.google.com/maps/search/?api=1&query=${query}`, '_blank');
+            }
+        }
+
+        function openGoogleMaps() {
+            window.open('https://www.google.com/maps/d/viewer?mid=YOUR_MAP_ID', '_blank');
+        }
+
+        // Tab Navigation
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tab = btn.dataset.tab;
+                
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                document.getElementById(`${tab}Tab`).classList.add('active');
+
+                // Show/hide preview bar
+                document.getElementById('previewBar').style.display = tab === 'schedule' ? 'flex' : 'none';
+            });
+        });
+
+        // Budget Tab
+        function renderBudget() {
+            const total = budgetData.reduce((sum, item) => sum + item.price, 0);
+            document.getElementById('totalBudget').textContent = total.toLocaleString();
+            document.getElementById('perPerson').textContent = `$${Math.round(total / 2).toLocaleString()}`;
+            document.getElementById('mapCount').textContent = `${tripData.schedule.reduce((sum, d) => sum + d.items.length, 0)} 個停留點`;
+
+            renderBudgetList('all');
+        }
+
+        function renderBudgetList(filter) {
+            const list = document.getElementById('budgetList');
+            const filtered = filter === 'all' 
+                ? budgetData 
+                : budgetData.filter(item => item.category === filter);
+
+            const icons = {
+                transport: '🚃',
+                food: '🍜',
+                activity: '🎫'
+            };
+
+            list.innerHTML = filtered.map(item => `
+                <div class="budget-item">
+                    <div class="budget-item-left">
+                        <div class="budget-item-icon">${icons[item.category]}</div>
+                        <div>
+                            <div class="budget-item-name">${item.name}</div>
+                            <div class="budget-item-category">${item.category === 'transport' ? '交通' : item.category === 'food' ? '餐飲' : '門票'}</div>
+                        </div>
+                    </div>
+                    <div class="budget-item-amount">
+                        <div class="budget-item-price">¥${item.price.toLocaleString()}</div>
+                        <div class="budget-item-status">${item.paid ? '✓ 已付' : '待付'}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        document.querySelectorAll('.budget-filter').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.budget-filter').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderBudgetList(btn.dataset.filter);
+            });
+        });
+
+        // Close modal on overlay click
+        document.getElementById('modalOverlay').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('modalOverlay')) {
+                closeModal();
+            }
+        });
+
+        // Initialize
+        initCalendar();
+        renderSchedule(1);
+        renderBudget();
+    </script>
+</body>
+</html>
